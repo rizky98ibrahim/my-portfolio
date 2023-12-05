@@ -18,11 +18,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone_number', 20)->nullable();
             $table->text('address')->nullable();
-            $table->enum('status', ['active', 'inactive'])->default('active');
-            $table->string('profile_photo_path', 2048)->nullable();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('profile_picture')->nullable();
+            $table->enum('status', ['active', 'inactive', 'banned'])->default('active');
+
             $table->string('password');
             $table->rememberToken();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('last_login')->nullable();
             $table->timestamps();
         });
     }
